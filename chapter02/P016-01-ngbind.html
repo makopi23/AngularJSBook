@@ -1,0 +1,24 @@
+<html ng-app="myApp">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body ng-controller="TextController">
+  <p>{{someText.message}}</p>
+  <p ng-bind="greeting"></p>
+
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js">
+  </script>
+
+  <script>
+    var myAppModule = angular.module("myApp", []);
+
+    myAppModule.controller("TextController", function($scope){
+      var someText = {};
+      someText.message = "旅の始まりです";
+      $scope.someText = someText;
+      $scope.greeting = someText.message + "2";
+    });
+  </script>
+</body>
+</html>

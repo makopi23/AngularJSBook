@@ -1,0 +1,26 @@
+<html ng-app="myApp">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+  <form ng-controller="StartUpController">
+    見込み： <input ng-change="computeNeeded()" ng-model="funding.startingEstimate"><br/>
+    推奨額： {{funding.needed}}
+  </form>
+
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js">
+  </script>
+
+  <script>
+  var myAppModule = angular.module("myApp", []);
+
+  myAppModule.controller("StartUpController", function($scope){
+    $scope.funding = { startingEstimate: 0};
+    $scope.computeNeeded = function(){
+    	$scope.funding.needed = $scope.funding.startingEstimate * 10;
+    }
+  });
+  </script>
+</body>
+</html>

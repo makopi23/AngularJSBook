@@ -1,0 +1,27 @@
+ <html ng-app>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js">
+  </script>
+</head>
+<body>
+  <form ng-controller="StartUpController">
+    見込み： <input ng-model="funding.startingEstimate"><br/>
+    推奨額： {{funding.needed}}
+  </form>
+
+  <script>
+			function StartUpController($scope) {
+				$scope.funding = {
+					startingEstimate : 0
+				};
+				var computeNeeded = function() {
+					$scope.funding.needed = $scope.funding.startingEstimate * 10;
+				};
+				$scope.$watch('funding.startingEstimate', computeNeeded);
+
+			}
+		</script>
+</body>
+</html>
